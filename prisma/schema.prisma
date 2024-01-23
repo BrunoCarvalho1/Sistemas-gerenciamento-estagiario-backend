@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Profile {
+  admin 
+  intern
+  master_admin
+}
+
+enum UserStatus {
+  active
+  inactive
+}
+
+model User {
+  email      String @id  @db.VarChar(60)
+  name       String @db.VarChar(60)
+  profile    Profile
+  status     UserStatus
+
+  password String @db.VarChar(200)
+  cell_phone_number String @db.VarChar(11) 
+
+  @@unique([cell_phone_number])
+  @@map("users")
+
+  contract_id String?
+  contract Contract? @relation(fields: [contract_id], references: [id])
+}
+
+enum ContractType {
+  graduation
+  postgraduate
+}
+
+model Contract {
+  id String @id @default(uuid())
+  user_email String 
+
+  end_date DateTime
+  start_date DateTime
+
+  termination_date DateTime?
+  type ContractType
+
+  @@map("contracts")
+
+  users User[]
+  vacations Vacation[]
+}
+
+enum VacationStatus {
+  approved
+  reproved
+}
+
+model Vacation {
+  id String @id @default(uuid())
+  contract_idd String
+
+  end_date DateTime
+  start_date DateTime
+
+  status VacationStatus?
+
+  @@map("vacations")
+
+  contract Contract @relation(fields: [contract_idd], references:[id])
+}
