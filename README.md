@@ -45,17 +45,22 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Prisma ORM
 
 ```bash
-# unit tests
-$ npm run test
+mkdir hello-prisma
+cd hello-prisma
 
-# e2e tests
-$ npm run test:e2e
+Next, initialize a TypeScript project using npm:
 
-# test coverage
-$ npm run test:cov
+npm init -y
+npm install typescript ts-node @types/node --save-dev
+
+npx tsc --init
+
+npm install prisma --save-dev
+
+npx prisma init --datasource-provider sqlite
 ```
 
 ## Support
