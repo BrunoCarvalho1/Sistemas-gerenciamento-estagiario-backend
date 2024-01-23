@@ -29,7 +29,8 @@
 ## Installation
 
 ```bash
-$ npm install
+$ npm install -g @nestjs/cli
+$ nest new nome-do-seu-projeto-backend
 ```
 
 ## Running the app
@@ -48,31 +49,22 @@ $ npm run start:prod
 ## Prisma ORM
 
 ```bash
-mkdir hello-prisma
-cd hello-prisma
+$ npm install @prisma/cli @prisma/client --save-dev
 
-Next, initialize a TypeScript project using npm:
+$ npx prisma init
 
-npm init -y
-npm install typescript ts-node @types/node --save-dev
+$ npx prisma migrate dev
 
-npx tsc --init
+```
+## PostgreSQL
 
-npm install prisma --save-dev
+```
+https://www.postgresql.org/download/
 
-npx prisma init --datasource-provider sqlite
+# 1.Selecionar Sistema operacional.
+# 2. E seguir passo a passo até o fim da instalação.
+# 3. Será nescessario gravar Login e senha para ter acesso a configurações futuras.
+
 ```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
